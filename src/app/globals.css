@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+
+  .circle-hole {
+    background: radial-gradient(circle at center, transparent 25%, black 25.5%);
+  }
+
+  .circle-hole-2 {
+    -webkit-mask: radial-gradient(50px, #0000 98%, #000);
+    mask: radial-gradient(50px, #0000 98%, #000);
+  }
+}
+
+
+.safari-split-text {
+  font-kerning: none;
+  -webkit-text-rendering: optimizeSpeed;
+  text-rendering: optimizeSpeed;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: white;
+  z-index: 2;
+}
+
+.filter-text {
+  mix-blend-mode: screen;
+  color: #804691;
+  z-index: 2;
+}
