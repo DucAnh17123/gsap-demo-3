@@ -346,14 +346,6 @@ export default function Section1() {
         );
       // End: text 11
 
-      const tl12 = gsap.timeline();
-      tl12.from(chars1, {
-        x: 30,
-        autoAlpha: 0,
-        stagger: 0.1,
-        repeat: -1,
-        repeatDelay: 2,
-      });
     },
     { scope: containerRef }
   );
