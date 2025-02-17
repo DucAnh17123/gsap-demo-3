@@ -316,36 +316,8 @@ export default function Section1() {
       //End: text 10
 
       // Begin: text 11
-      const splitText11 = new SplitText(".split-text-11", {
-        type: "words,chars",
-      });
-      const chars11 = splitText11.chars;
-      const words11 = splitText11.words;
-      gsap.set(words11, {
-        display: "none",
-        autoAlpha: 1,
-        perspective: 400,
-      });
-      const tl11 = gsap.timeline({ repeat: -1, repeatDelay: 0.5 });
-      tl11
-        .to(words11, {
-          display: "block",
-          stagger: {
-            each: 0.5,
-          },
-        })
-        .to(
-          words11,
-          {
-            display: "none",
-            stagger: {
-              each: 0.5,
-            },
-          },
-          "0.5"
-        );
-      // End: text 11
 
+      // End: text 11
     },
     { scope: containerRef }
   );
@@ -426,13 +398,6 @@ export default function Section1() {
           <div className=" text-white text-6xl font-semibold">rotate text</div>
         </div>
 
-        <div className="bg-gray-500 h-[200px] flex justify-center items-center font-extrabold col-span-2">
-          <div className="text-white text-6xl font-semibold">
-            Buildmodern{" "}
-            <span className="split-text-11">cute better modern websites</span>{" "}
-            with Aceternity UI
-          </div>
-        </div>
       </div>
     </div>
   );
