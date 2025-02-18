@@ -18,15 +18,15 @@ const Demo7 = () => {
       let skewSetter = gsap.quickTo(".img", "skewY"), // fast
         clamp = gsap.utils.clamp(-20, 20); // don't let the skew go beyond 20 degrees.
 
-      // ScrollSmoother.create({
-      //   wrapper: "#smooth-wrapper",
-      //   content: "#smooth-content",
-      //   smooth: 4,
-      //   speed: 2,
-      //   effects: true,
-      //   onUpdate: (self) => skewSetter(clamp(self.getVelocity() / -50)),
-      //   onStop: () => skewSetter(0),
-      // });
+      ScrollSmoother.create({
+        wrapper: "#smooth-wrapper",
+        content: "#smooth-content",
+        smooth: 4,
+        speed: 2,
+        effects: true,
+        onUpdate: (self) => skewSetter(clamp(self.getVelocity() / -50)),
+        onStop: () => skewSetter(0),
+      });
 
       const smoother = ScrollSmoother.create({
         wrapper: "#smooth-wrapper",
