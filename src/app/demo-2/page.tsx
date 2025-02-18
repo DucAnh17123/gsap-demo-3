@@ -3,12 +3,12 @@
 import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
-import { Flip } from "gsap/all";
+import { Flip, Observer } from "gsap/all";
 import { Physics2DPlugin } from "gsap-trial/all";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import NextImg from "@/component/common/next-img";
 
-gsap.registerPlugin(ScrollTrigger, useGSAP, Flip, Physics2DPlugin);
+gsap.registerPlugin(ScrollTrigger, useGSAP, Flip, Physics2DPlugin, Observer);
 
 export default function Demo2() {
   const containerRef = useRef(null);
@@ -64,14 +64,60 @@ export default function Demo2() {
         repeatRefresh: true,
       });
 
-      gsap.to(".line-card", {
-        keyframes: [
-          { left: "100%", duration: 2 },
-          { top: "100%", duration: 2 },
-          { left: 0, duration: 2 },
-          { top: 0, duration: 2 },
-        ],
-        repeat: -1,
+      // const tl1 = gsap.timeline({
+      //   repeat: -1,
+      //   repeatDelay: 1,
+      //   repeatRefresh: true,
+      // });
+      // tl1.set(".rain", {
+      //   left: `70%`,
+      // });
+      // tl1
+      //   .fromTo(
+      //     ".rain",
+      //     { top: 0 },
+      //     {
+      //       top: "100%",
+      //       yPercent: -100,
+      //       duration: 2,
+      //     }
+      //   )
+      //   .to(".rain", { height: 5, background: "blue" })
+      //   .to(
+      //     ".rain",
+      //     {
+      //       duration: 4,
+      //       physics2D: {
+      //         velocity: "random(50, 650)",
+      //         angle: "random(0, -45)",
+      //         gravity: 500,
+      //       },
+      //       repeat: -1,
+      //       repeatDelay: 1,
+      //     },
+      //     "<"
+      //   )
+      //   .to(".rain", { height: 5 })
+      //   .to(".rain", { top: 0, yPercent: 0, duration: 0, height: 40 });
+
+      Observer.create({
+        target: ".card-1",
+        type: "pointer,touch",
+        onMove: (self) => {
+          const card = document.querySelector(".card-1");
+          if (!card) return;
+          const react = card.getBoundingClientRect();
+
+          gsap.to(".line-card", {
+            left: self.x - react.left,
+            top: self.y - react.top,
+            xPercent: -50,
+            yPercent: -50,
+            autoAlpha: 1,
+            scale: 1,
+            duration: 0.2,
+          });
+        },
       });
 
       gsap.to(".line-card-2", {
@@ -104,8 +150,8 @@ export default function Demo2() {
       ).to(".chill", {
         width: "10px",
         height: "10px",
-        background: "red",
-        scale: "0.1",
+        background: "#663399",
+        scale: "0.02",
         duration: 0.1,
       });
       tl.to(
@@ -162,7 +208,7 @@ export default function Demo2() {
     //   </div>
     // </div>
     <div ref={containerRef} className="relative overflow-hidden">
-      <div className="w-full h-[100vh] bg-black flex justify-center items-center">
+      <div className="relative w-full h-[100vh] bg-black flex justify-center items-center">
         <div className="h-[500px] w-[400px] rounded-2xl relative">
           <div className="gradient-card absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%+16px)] h-[calc(100%+16px)] blur-xl z-[1]"></div>
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-4px)] h-[calc(100%-4px)] rounded-2xl bg-black z-[2] p-[20px]">
@@ -170,11 +216,18 @@ export default function Demo2() {
             <div className="text-white text-xl">description</div>
           </div>
         </div>
+
+        {/* {Array.from({ length: 20 }).map((_, index) => (
+          <div
+            key={index}
+            className="rain absolute top-0 w-[2px] h-[40px] bg-gradient-to-t from-blue-500 to-black/50 rounded-full"
+          ></div>
+        ))} */}
       </div>
 
       <div className="flex w-full justify-around items-center">
         <div className="w-full h-[100vh] bg-black flex justify-center items-center">
-          <div className="h-[500px] w-[400px] rounded-2xl relative flex justify-center items-center overflow-hidden bg-gray-500/50">
+          <div className="card-1 h-[500px] w-[400px] rounded-2xl relative flex justify-center items-center overflow-hidden bg-gray-500/50">
             <div className="h-[calc(100%-4px)] w-[calc(100%-4px)] bg-black rounded-2xl z-[1] p-4">
               <div className="relative w-full aspect-video rounded-2xl overflow-hidden">
                 <NextImg
@@ -187,7 +240,7 @@ export default function Demo2() {
               <div className="text-white text-xl">description</div>
             </div>
 
-            <div className="line-card absolute w-[80px] h-[80px] bg-gradient-to-tl from-[#18CCFC] to-[#AE48FF] top-0 left-0 -translate-x-1/2 -translate-y-1/2 -rotate-45"></div>
+            <div className="line-card absolute w-[300px] h-[300px] bg-gradient-to-tl from-[#18CCFC] to-[#AE48FF] top-0 left-0 -translate-x-1/2 -translate-y-1/2 rotate-45"></div>
           </div>
         </div>
 
@@ -205,7 +258,7 @@ export default function Demo2() {
               <div className="text-white text-xl">description</div>
             </div>
 
-            <div className="line-card-2 absolute w-[80px] h-[80px] bg-gradient-to-b from-[#18CCFC] via-[#AE48FF] to-[#AE48FF]/10 top-0 left-0 -translate-x-1/2 -translate-y-1/2 rotate-45"></div>
+            <div className="line-card-2 absolute w-[160px] h-[160px] bg-gradient-to-b from-[#18CCFC] via-[#AE48FF] to-[#AE48FF]/10 top-0 left-0 -translate-x-1/2 -translate-y-1/2 rotate-45"></div>
           </div>
         </div>
       </div>
