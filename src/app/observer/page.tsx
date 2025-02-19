@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { Flip, Observer } from "gsap/all";
@@ -100,22 +100,96 @@ export default function Demo2() {
       //   .to(".rain", { height: 5 })
       //   .to(".rain", { top: 0, yPercent: 0, duration: 0, height: 40 });
 
+      // ===============================================================================================
+      gsap.set(".lens", {
+        scale: 0,
+      });
       Observer.create({
-        target: ".card-1",
+        target: ".lens-card",
         type: "pointer,touch",
-        onMove: (self) => {
-          const card = document.querySelector(".card-1");
-          if (!card) return;
-          const react = card.getBoundingClientRect();
-
-          gsap.to(".line-card", {
-            left: self.x - react.left,
-            top: self.y - react.top,
+        onMove: (seft) => {
+          const lensCard = document.querySelector(".lens-card");
+          if (!lensCard) return;
+          const rect = lensCard?.getBoundingClientRect();
+          gsap.to(".lens", {
+            top: () => seft.y - rect.top,
+            left: () => seft.x - rect.left,
             xPercent: -50,
             yPercent: -50,
+          });
+
+          gsap.to(".zoom-img", {
+            left: () => -(seft.x - rect.left) * 2,
+            top: () => -(seft.y - rect.top) * 2,
+            x: 70, // = 140 : 2; 140 la size cua lens
+            y: 70,
+          });
+        },
+        onHover: () => {
+          gsap.to(".lens", {
+            scale: 1,
+          });
+        },
+        onHoverEnd: () => {
+          gsap.to(".lens", {
+            scale: 0,
+          });
+        },
+      });
+      // ===============================================================================================
+
+      Observer.create({
+        target: ".text-content",
+        type: "pointer, touch",
+        onMove: (seft) => {
+          const textWrap = document.querySelector(".text-content");
+          if (!textWrap) return;
+          const rect = textWrap?.getBoundingClientRect();
+          gsap.to(".box-hover", {
+            top: seft.y - rect.top,
+            left: seft.x - rect.left,
+          });
+
+          gsap.to(".text-hover", {
+            top: -(seft.y - rect.top),
+            left: -(seft.x - rect.left),
+          });
+        },
+      });
+
+      // ===============================================================================================
+
+      Observer.create({
+        target: ".card-line",
+        type: "pointer,touch",
+        onMove: (self) => {
+          const card = document.querySelector(".card-line");
+          if (!card) return;
+          const rect = card.getBoundingClientRect();
+          const x = self.x - rect.left;
+          const y = self.y - rect.top;
+
+          gsap.to(".line-card", {
+            left: () => `${x > rect.width / 2 ? 100 : 0}%`,
+            top: () => `${y > rect.height / 2 ? 100 : 0}%`,
+            // xPercent: -50,
+            // yPercent: -50,
+            // left: () => {
+            //   if (x > rect.width / 3 && x < 2 * (rect.width / 3))
+            //     return self.x - rect.left;
+            //   if (x > 2 * (rect.width / 3)) return rect.width;
+            //   return 0;
+            // },
+            // top: () => {
+            //   if (y > rect.height / 3 && y < 2 * (rect.height / 3))
+            //     return self.y - rect.top;
+            //   if (y > 2 * (rect.height / 3)) return rect.height;
+            //   return 0;
+            // },
             autoAlpha: 1,
             scale: 1,
-            duration: 0.2,
+            duration: 0.5,
+            delay: 0.1
           });
         },
       });
@@ -225,9 +299,45 @@ export default function Demo2() {
         ))} */}
       </div>
 
+      <div className="relative w-full h-[100vh] bg-black flex flex-col gap-20 justify-center items-center">
+        <div className="h-[500px] w-[400px] rounded-2xl relative bg-gradient-to-b from-[#18CCFC]/80 to-[#AE48FF]/80 p-8">
+          <div className="group lens-card relative w-full aspect-[16/12] rounded-2xl overflow-hidden">
+            <NextImg src="/assets/images/bg-10.jpg" objectFit="cover" alt="" />
+
+            <div className="lens absolute top-0 left-0 scale-0 size-[140px] rounded-full overflow-hidden pointer-events-none">
+              <div className="zoom-img absolute w-[336px] h-[252px] scale-[2] rounded-2xl origin-top-left">
+                <div className="relative w-full h-full">
+                  <NextImg
+                    src="/assets/images/bg-10.jpg"
+                    objectFit="cover"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="text-content relative text-white group text-[4rem] md:text-[7.5rem] xl:text-[9rem] 2xl:text-[9.5rem] leading-[4.5rem] md:leading-[8.5rem] lg:leading-[10rem] font-bold uppercase select-none">
+          Day la Observer
+          <div className="box-hover absolute hidden lg:block top-0 left-0 h-[300px] w-[300px] translate-x-[-150px] translate-y-[-150px] overflow-hidden rounded-full pointer-events-none whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <div
+              className="text-hover absolute text-black top-0 left-0 translate-x-[150px] translate-y-[150px] inline-block bg-yellow-500 z-10 select-none"
+              style={{
+                WebkitTextFillColor: "transparent",
+                WebkitBackgroundClip: "text",
+              }}
+            >
+              Day la Observer
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
       <div className="flex w-full justify-around items-center">
         <div className="w-full h-[100vh] bg-black flex justify-center items-center">
-          <div className="card-1 h-[500px] w-[400px] rounded-2xl relative flex justify-center items-center overflow-hidden bg-gray-500/50">
+          <div className="card-line h-[500px] w-[500px] rounded-2xl relative flex justify-center items-center overflow-hidden bg-gray-500/50">
             <div className="h-[calc(100%-4px)] w-[calc(100%-4px)] bg-black rounded-2xl z-[1] p-4">
               <div className="relative w-full aspect-video rounded-2xl overflow-hidden">
                 <NextImg
@@ -240,7 +350,8 @@ export default function Demo2() {
               <div className="text-white text-xl">description</div>
             </div>
 
-            <div className="line-card absolute w-[300px] h-[300px] bg-gradient-to-tl from-[#18CCFC] to-[#AE48FF] top-0 left-0 -translate-x-1/2 -translate-y-1/2 rotate-45"></div>
+            <div className="line-card absolute w-[353.57px] h-[353.57px] bg-gradient-to-tl from-[#18CCFC] to-[#AE48FF] top-0 left-0 -translate-x-1/2 -translate-y-1/2 rotate-45"></div>
+            {/* <div className="line-card absolute inset-0 scale-125 bg-gradient-to-tl from-[#18CCFC] to-[#AE48FF] top-0 left-0 -translate-x-1/2 -translate-y-1/2 rotate-45"></div> */}
           </div>
         </div>
 
