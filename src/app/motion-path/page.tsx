@@ -78,6 +78,13 @@ const Demo5 = () => {
           0
         );
 
+      const tl3 = gsap.timeline({ repeat: -1, repeatRefresh: true });
+      tl3.to(".circle-line", {
+        rotate: "+=360",
+        duration: 4,
+        ease: "none",
+      });
+
       gsap.set(".circle", { autoAlpha: 0, scale: 0 });
       Observer.create({
         target: window, // Chỉ theo dõi sự kiện trong container
@@ -248,11 +255,23 @@ const Demo5 = () => {
       
     </div> */}
           <div
-            className="hole absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black rounded-full"
+            className="hole absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black rounded-full flex justify-center items-center"
             style={{
               clipPath: `${clipPathValue}`,
             }}
-          ></div>
+          >
+            <div className=" h-[340px] w-[340px] relative flex justify-center text-white items-center overflow-hidden rounded-full bg-black">
+              <div
+                className="circle-line w-full h-full absolute inset-0 flex justify-center items-center"
+                style={{
+                  backgroundImage:
+                    "conic-gradient(black 15deg, #18CCFC 45deg, #AE48FF 90deg, black 90deg)",
+                }}
+              >
+                <div className="w-[calc(100%-4px)] h-[calc(100%-4px)] bg-black rounded-full"></div>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="relative content w-full h-[3200px] bg-black overflow-hidden">
           <div className="absolute top-0 left-[30px] line w-[2px] bg-gradient-to-t from-[#18CCFC] via-[#AE48FF] to-[#AE48FF]/10 rounded-full"></div>
@@ -386,7 +405,7 @@ const Demo5 = () => {
         <div className="section-3 relative w-full h-[100vh]">
           <div className="bg-1 absolute inset-0 w-full h-full bg-red-500 z-[3]">
             <div className="relative w-full h-full">
-            <NextImg
+              <NextImg
                 src="/assets/images/bg-9.jpg"
                 objectFit="cover"
                 alt=""
@@ -395,8 +414,8 @@ const Demo5 = () => {
             </div>
           </div>
           <div className="bg-1 absolute inset-0 w-full h-full bg-blue-500 z-[2]">
-          <div className="relative w-full h-full">
-            <NextImg
+            <div className="relative w-full h-full">
+              <NextImg
                 src="/assets/images/bg-10.jpg"
                 objectFit="cover"
                 alt=""
@@ -405,8 +424,8 @@ const Demo5 = () => {
             </div>
           </div>
           <div className="bg-1 absolute inset-0 w-full h-full bg-green-500 z-[1]">
-          <div className="relative w-full h-full">
-            <NextImg
+            <div className="relative w-full h-full">
+              <NextImg
                 src="/assets/images/bg-8.jpg"
                 objectFit="cover"
                 alt=""

@@ -25,7 +25,7 @@ const containerRef = useRef(null)
       <Section9 />
 
 
-      {/* <Section1 />
+      <Section1 />
 
       <Section2 />
 
@@ -39,7 +39,7 @@ const containerRef = useRef(null)
 
       <Section7 />
 
-      <Section8 /> */}
+      <Section8 />
 
       <div className="py-[200px]"></div>
     </div>

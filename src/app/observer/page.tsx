@@ -7,6 +7,7 @@ import { Flip, Observer } from "gsap/all";
 import { Physics2DPlugin } from "gsap-trial/all";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import NextImg from "@/component/common/next-img";
+import Header from "@/component/common/Header";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP, Flip, Physics2DPlugin, Observer);
 
@@ -189,7 +190,7 @@ export default function Demo2() {
             autoAlpha: 1,
             scale: 1,
             duration: 0.5,
-            delay: 0.1
+            delay: 0.1,
           });
         },
       });
@@ -244,6 +245,41 @@ export default function Demo2() {
         },
         1
       );
+
+      const tl3 = gsap.timeline({ repeat: -1, repeatRefresh: true });
+      tl3.to(".circle", {
+        rotate: "+=360",
+        duration: 4,
+        ease: "none",
+      });
+
+      const tl4 = gsap.timeline({ repeat: -1, repeatDelay: 2 });
+      tl.set(".eyes", {
+        perspective: 400,
+        clearProps: "transform",
+        rotateZ: 180,
+      });
+      tl4
+        .fromTo(
+          ".eyes",
+          {
+            rotationX: 0,
+            transformOrigin: String("50% 50% -0%"),
+          },
+          {
+            rotationX: "+=180",
+            duration: 2,
+            ease: "none",
+          }
+        )
+        .to(
+          ".sharigan",
+          {
+            rotate: "+=360",
+            duration: 1,
+          },
+          "<+=1"
+        );
     },
     { scope: containerRef }
   );
@@ -282,6 +318,8 @@ export default function Demo2() {
     //   </div>
     // </div>
     <div ref={containerRef} className="relative overflow-hidden">
+      {/* <Header /> */}
+
       <div className="relative w-full h-[100vh] bg-black flex justify-center items-center">
         <div className="h-[500px] w-[400px] rounded-2xl relative">
           <div className="gradient-card absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%+16px)] h-[calc(100%+16px)] blur-xl z-[1]"></div>
@@ -332,7 +370,6 @@ export default function Demo2() {
             </div>
           </div>
         </div>
-        
       </div>
 
       <div className="flex w-full justify-around items-center">
@@ -371,6 +408,66 @@ export default function Demo2() {
 
             <div className="line-card-2 absolute w-[160px] h-[160px] bg-gradient-to-b from-[#18CCFC] via-[#AE48FF] to-[#AE48FF]/10 top-0 left-0 -translate-x-1/2 -translate-y-1/2 rotate-45"></div>
           </div>
+        </div>
+
+        <div className="w-full h-[100vh] bg-black flex justify-center items-center">
+          <div className=" h-[400px] w-[400px] relative flex justify-center text-white items-center overflow-hidden rounded-full">
+            <div
+              className="circle w-full h-full absolute inset-0"
+              style={{
+                backgroundImage:
+                  "conic-gradient(black 15deg, red 45deg, yellow 90deg, black 90deg)",
+              }}
+            ></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 set-0 bg-black w-[calc(100%-2px)] h-[calc(100%-2px)] rounded-full p-8">
+              <div className="relative w-full h-full rounded-full overflow-hidden">
+                <NextImg
+                  src="/assets/images/bg-11.jpg"
+                  objectFit="cover"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full h-[500px] flex justify-center items-center bg-black">
+        {/* <div className="sharigan relative bg-red-500 size-[200px] rounded-full overflow-hidden">
+          <NextImg src="/assets/images/sharigan.png" objectFit="cover" alt="" />
+        </div> */}
+
+        <div className="w-[1000px] h-[200px] flex justify-between items-center">
+          {/* <div
+            className="relative w-[400px] h-[200px] bg-white rounded-r-[400px]"
+            style={{ clipPath: "ellipse(55% 50% at 55% 70%)" }}
+          >
+            <div className="eyes absolute size-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-red-500"></div>
+          </div> */}
+          <div className="relative w-[500px] h-[300px] overflow- flex justify-center item">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-bl-full rounded-tr-full bg-black -rotate-45"></div>
+            <div className="eyes absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[425px] h-[180px] bg-white rounded-[50%] flex justify-center items-center">
+              <div className="sharigan relative h-full aspect-square rounded-full">
+                <NextImg
+                  src="/assets/images/sharigan.png"
+                  objectFit="cover"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <div className="relative w-[500px] h-[300px] overflow- flex justify-center item">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-bl-full rounded-tr-full bg-black -rotate-45"></div>
+            <div className="eyes absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[425px] h-[180px] bg-white rounded-[50%] flex justify-center items-center">
+              <div className="sharigan relative h-full aspect-square rounded-full">
+                <NextImg
+                  src="/assets/images/sharigan.png"
+                  objectFit="cover"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>{" "}
         </div>
       </div>
 
