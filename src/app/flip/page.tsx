@@ -7,7 +7,7 @@ import { Flip } from "gsap/Flip";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { TextPlugin } from "gsap/TextPlugin";
 import { MotionPathPlugin, Draggable, Observer } from "gsap/all";
-import NextImg from "@/component/common/next-img";
+import NextImg from "@/components/common/next-img";
 import { InertiaPlugin, SplitText } from "gsap-trial/all";
 
 gsap.registerPlugin(
@@ -95,7 +95,6 @@ const FlipSquares = () => {
         onDown: () => gsap.to(".circle", { scale: 4, duration: 2 }),
         onUp: () => gsap.to(".circle", { scale: 2, duration: 2 }),
       });
-
     },
     { scope: containerRef }
   );

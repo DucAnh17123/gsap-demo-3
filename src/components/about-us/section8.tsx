@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef, useState } from "react";
 import React from "react";
-import NextImg from "@/component/common/next-img";
+import NextImg from "@/components/common/next-img";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,19 +59,19 @@ export default function Section8() {
     //   </div>
     // </section>
     <section
-    ref={containerRef}
-    className="relative w-full h-[100vh] bg-black overflow-hidden grid grid-cols-3"
-  >
-    <div className="box absolute z-[1] bg-red-500/50"></div>
-    <div className="absolute inset-0 w-full h-full">
-      <div className="relative w-full h-full">
-        <NextImg
-          src="/assets/images/duda-1.jpg"
-          alt="UPSC"
-          objectFit="cover"
-        />
+      ref={containerRef}
+      className="relative w-full h-[100vh] bg-black overflow-hidden grid grid-cols-3"
+    >
+      <div className="box absolute z-[1] bg-red-500/50"></div>
+      <div className="absolute inset-0 w-full h-full">
+        <div className="relative w-full h-full">
+          <NextImg
+            src="/assets/images/duda-1.jpg"
+            alt="UPSC"
+            objectFit="cover"
+          />
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   );
 }

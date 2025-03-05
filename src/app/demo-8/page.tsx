@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { ScrollSmoother, SplitText } from "gsap-trial/all";
 import { ScrollTrigger, Flip } from "gsap/all";
 import Link from "next/link";
-import NextImg from "@/component/common/next-img";
+import NextImg from "@/components/common/next-img";
 
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger, SplitText, Flip);
 

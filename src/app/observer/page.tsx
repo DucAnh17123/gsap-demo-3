@@ -6,8 +6,8 @@ import { gsap } from "gsap";
 import { Flip, Observer } from "gsap/all";
 import { Physics2DPlugin } from "gsap-trial/all";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import NextImg from "@/component/common/next-img";
-import Header from "@/component/common/Header";
+import NextImg from "@/components/common/next-img";
+import Header from "@/components/common/Header";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP, Flip, Physics2DPlugin, Observer);
 
@@ -102,6 +102,7 @@ export default function Demo2() {
       //   .to(".rain", { top: 0, yPercent: 0, duration: 0, height: 40 });
 
       // ===============================================================================================
+
       gsap.set(".lens", {
         scale: 0,
       });
@@ -374,8 +375,8 @@ export default function Demo2() {
 
       <div className="flex w-full justify-around items-center">
         <div className="w-full h-[100vh] bg-black flex justify-center items-center">
-          <div className="card-line h-[500px] w-[500px] rounded-2xl relative flex justify-center items-center overflow-hidden bg-gray-500/50">
-            <div className="h-[calc(100%-4px)] w-[calc(100%-4px)] bg-black rounded-2xl z-[1] p-4">
+          <div className="card-line h-[500px] w-[500px] rounded-2xl relative flex justify-center items-center overflow- bg-gray-500/50">
+            <div className="h-[calc(100%-4px)] w-[calc(100%-4px)] bg- rounded-2xl z-[1] p-4">
               <div className="relative w-full aspect-video rounded-2xl overflow-hidden">
                 <NextImg
                   src="/assets/images/bg-9.jpg"

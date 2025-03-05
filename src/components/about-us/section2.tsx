@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import React from "react";
-import NextImg from "@/component/common/next-img";
+import NextImg from "@/components/common/next-img";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -91,7 +91,6 @@ export default function Section2() {
             <div className="circle size-[50px] rounded-full bg-blue-500"></div>
             <div className="circle size-[50px] rounded-full bg-blue-500"></div>
           </div>
-
         </div>
       </div>
 

@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import Header from "@/component/common/Header";
-import Section9 from "@/component/about-us/section9";
-import Section10 from "@/component/about-us/section10";
+import Header from "@/components/common/Header";
+import Section9 from "@/components/about-us/section9";
+import Section10 from "@/components/about-us/section10";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

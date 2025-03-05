@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText, DrawSVGPlugin, MorphSVGPlugin } from "gsap-trial/all";
-import NextImg from "@/component/common/next-img";
+import NextImg from "@/components/common/next-img";
 // import NextImg from "@/component/common/next-img";
 
 gsap.registerPlugin(

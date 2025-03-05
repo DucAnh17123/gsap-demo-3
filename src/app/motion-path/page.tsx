@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { Observer, MotionPathPlugin, ScrollTrigger } from "gsap/all";
 import { ScrollSmoother, DrawSVGPlugin } from "gsap-trial/all";
 import Link from "next/link";
-import NextImg from "@/component/common/next-img";
+import NextImg from "@/components/common/next-img";
 
 gsap.registerPlugin(
   Observer,

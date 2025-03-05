@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { ScrollSmoother } from "gsap-trial/all";
 import { ScrollTrigger } from "gsap/all";
 import Link from "next/link";
-import NextImg from "@/component/common/next-img";
+import NextImg from "@/components/common/next-img";
 
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
 
@@ -232,7 +232,6 @@ const Demo5 = () => {
   return (
     <div ref={containerRef} id="smooth-wrapper">
       <div id="smooth-content" className="w-full relative">
-        
         <div className="h-[100vh] w-full relative overflow-hidden">
           <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full h-[160%] img">
             <div className="relative w-full h-full">
@@ -416,7 +415,6 @@ const Demo5 = () => {
             </div>
           </div>
         </div>
-        
       </div>
     </div>
   );

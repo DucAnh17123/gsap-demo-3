@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import React from "react";
-import NextImg from "@/component/common/next-img";
+import NextImg from "@/components/common/next-img";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -107,7 +107,7 @@ export default function Section3() {
             <div className="circle size-[50px] rounded-[20px] bg-blue-500"></div>
             <div className="circle size-[50px] rounded-[20px] bg-blue-500"></div>
           </div>
-          
+
           <div className="flex items-center gap-6 mt-5 pl-20">
             <div className="circle size-[50px] rounded-[20px] bg-blue-500"></div>
             <div className="circle size-[50px] rounded-[20px] bg-blue-500"></div>
@@ -117,7 +117,7 @@ export default function Section3() {
             <div className="circle size-[50px] rounded-[20px] bg-blue-500"></div>
             <div className="circle size-[50px] rounded-[20px] bg-blue-500"></div>
           </div>
-          
+
           <div className="flex items-center gap-6 mt-5 pl-20">
             <div className="circle size-[50px] rounded-[20px] bg-blue-500"></div>
             <div className="circle size-[50px] rounded-[20px] bg-blue-500"></div>
@@ -127,7 +127,7 @@ export default function Section3() {
             <div className="circle size-[50px] rounded-[20px] bg-blue-500"></div>
             <div className="circle size-[50px] rounded-[20px] bg-blue-500"></div>
           </div>
-          
+
           <div className="flex items-center gap-6 mt-5 pl-20">
             <div className="circle size-[50px] rounded-[20px] bg-blue-500"></div>
             <div className="circle size-[50px] rounded-[20px] bg-blue-500"></div>
@@ -137,7 +137,7 @@ export default function Section3() {
             <div className="circle size-[50px] rounded-[20px] bg-blue-500"></div>
             <div className="circle size-[50px] rounded-[20px] bg-blue-500"></div>
           </div>
-          
+
           <div className="flex items-center gap-6 mt-5 pl-20">
             <div className="circle size-[50px] rounded-[20px] bg-blue-500"></div>
             <div className="circle size-[50px] rounded-[20px] bg-blue-500"></div>

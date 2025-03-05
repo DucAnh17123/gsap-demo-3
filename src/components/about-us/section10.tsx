@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState } from "react";
 import React from "react";
-import NextImg from "@/component/common/next-img";
+import NextImg from "@/components/common/next-img";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -76,7 +76,6 @@ export default function Section10() {
 
   return (
     <div className="relative w-full h-[100vh] overflow-y-scroll">
-
       <div
         id="scrollDist"
         className="absolute top-0 select-none w-full h-[400%]"
