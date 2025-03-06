@@ -1,12 +1,18 @@
+import BlobCardHover from "@/components/card/BlobCardHover";
+import BlobCard from "@/components/card/BolbCard";
 import BorderDynamicCard from "@/components/card/BorderDynamicCard";
 import BorderDynamicHoverCard from "@/components/card/BorderDynamicHoverCard";
+import CircleWindowCard from "@/components/card/CircleWindowCard";
+import CubeCard from "@/components/card/CubeCard";
 import DirectionHoverCard from "@/components/card/DirectionHoverCard";
 import DirectionImageHoverCard from "@/components/card/DirectionImageHoverCard";
+import ExpandImageCard from "@/components/card/ExpandImageCard";
 import FlipCard from "@/components/card/FlipCard";
 import LensCard from "@/components/card/LensCard";
 import MeteorsCard from "@/components/card/MeteorsCard";
 import NeonGradientCard from "@/components/card/NeonGradientCard";
-import SkewCard from "@/components/card/SkewCard";
+import RotateCard from "@/components/card/RotateCard";
+import SlideCard from "@/components/card/SlideCard";
 import React from "react";
 
 export default function CardPage() {
@@ -46,7 +52,31 @@ export default function CardPage() {
         </div>
 
         <div className="col-span-4">
-          <SkewCard />
+          <RotateCard />
+        </div>
+
+        <div className="col-span-4">
+          <ExpandImageCard />
+        </div>
+
+        <div className="col-span-4">
+          <SlideCard />
+        </div>
+
+        <div className="col-span-4">
+          <CubeCard />
+        </div>
+
+        <div className="col-span-4">
+          <BlobCard />
+        </div>
+
+        <div className="col-span-4">
+          <BlobCardHover />
+        </div>
+
+        <div className="col-span-4">
+          <CircleWindowCard />
         </div>
       </div>
     </div>
